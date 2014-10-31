@@ -5,8 +5,10 @@
 
 var potPickTemplate = $('#pot-picks-template').html();
 var ranksTemplate = $('#ranks-template').html();
+var playerTrackerTemplate = $('#player-tracker-template').html();
 
 var templates = {
     renderPotPickTemplate : Handlebars.compile(potPickTemplate),
-    renderRanksTemplate : Handlebars.compile(ranksTemplate)
+    renderRanksTemplate : Handlebars.compile(ranksTemplate),
+    renderPlayerTrackerTemplate : Handlebars.compile(playerTrackerTemplate)
 };

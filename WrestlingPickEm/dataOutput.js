@@ -18,7 +18,27 @@ function getRank(rank){
     return list;
 }
 
-function getWrestler(wt, id){
+function getWrestler(id, wt){
+    if(wt) return getWrestlerWithWeight(id, wt);
+
+    for(var weight in wrData){
+        if(weight == 'id') continue;
+        var bracket = wrData[weight];
+        for(var wrRank in bracket){
+            if(wrRank == 0){
+                var unranked = bracket[wrRank];
+                unranked.forEach(function (wrestler) {
+                    if(wrestler.id == id) return [wrestler, 0];
+                })
+            } else {
+                if(bracket[wrRank].id == id) return [bracket[wrRank], wrRank];
+            }
+        }
+
+    }
+}
+
+function getWrestlerWithWeight(id, wt){
     var bracket = wrData[weight];
     for(var i = 1; i <= NUMRANKSPICKED; i++ ){
         var wr = bracket[i];

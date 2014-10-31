@@ -15,7 +15,7 @@
     <script type="text/x-handlebars-template" id="pot-picks-template">
         {{#if wrestlers}}
             {{#each wrestlers}}
-            <p id="{{ this.id }}">
+            <p id="wrestler-{{ this.id }}">
                 <strong>{{ this.weight }}</strong>: {{ this.fName }} {{ this.lName }}
             </p>
             {{/each}}
@@ -32,9 +32,27 @@
         {{/if}}
     </script>
 
+    <script type="text/x-handlebars-template" id="player-tracker-template">
+        {{#if players}}
+            {{#each players}}
+                <div id="player-{{ this.playerNum }}">
+                    <p><strong>{{ this.playerNum }}</strong></p>
+                    <ul>
+                    {{#if this.picksLeft}}
+                        {{#each this.picksLeft}}
+                            <li>{{this}}</li>
+                        {{/each}}
+                    {{/if}}
+                    </ul>
+                </div>
+            {{/each}}
+        {{/if}}
+    </script>
+
     <script src="constants.js"></script>
     <script src="templates.js"></script>
     <script src="Wrestler.js"></script>
+    <script src="Player.js"></script>
     <script src="dataInput.js"></script>
     <script src="dataOutput.js"></script>
     <script src="playerInput.js"></script>

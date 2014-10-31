@@ -55,8 +55,15 @@ function addWrestler(wr, pos){
 }
 
 function createPlayerData(numPlayers){
+    if(numPlayers < 1){
+        console.log('No Players Selected to Play');
+        return 0;
+    }
+
+    playerData.numPlayer = numPlayers;
+    playerData.curTurn = 1;
     for(var i = 1; i <= numPlayers; i++){
-        playerData[i] = new Array (10);
+        playerData[i] = new Player(i);
     }
 }
 

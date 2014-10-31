@@ -3,7 +3,6 @@
  */
 
 
-var curTurn = 1;
 var pLeft = [];
 
 function startPickEm() {
@@ -15,13 +14,14 @@ function startPickEm() {
 
     console.log(playerData);
 
-    pLeft = potPicks(curTurn);
+    displayPlayerInfo();
+    displayRanksSelection();
 
-    listRanks();
     var list = getRank(1);
-    showPotPick(list);
+    displayPotPicks(list);
 }
 
+//May Not Need this Function
 function potPicks(playerID){
     var pData = playerData[playerID];
     pLeft = [];
@@ -34,6 +34,23 @@ function potPicks(playerID){
 
     return pLeft;
 
+}
+
+function nextPlayersTurn(){
+    playerData.curTurn++;
+    if(playerData.curTurn > playerData.numPlayer)
+        playerData.curTurn = 1;
+
+    displayPlayerInfo();
+    var fRank = playerData[playerData.curTurn].picksLeft[0];
+    var list = getRank(fRank);
+    displayPotPicks(list);
+}
+
+
+function getNumFromId(id){
+    var index = id.indexOf('-');
+    return id.toString().slice(index + 1);
 }
 
 
