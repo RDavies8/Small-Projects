@@ -4,7 +4,9 @@
 
 
 var potPickTemplate = $('#pot-picks-template').html();
+var ranksTemplate = $('#ranks-template').html();
 
 var templates = {
-    renderPotPickTemplate : Handlebars.compile(potPickTemplate)
+    renderPotPickTemplate : Handlebars.compile(potPickTemplate),
+    renderRanksTemplate : Handlebars.compile(ranksTemplate)
 };

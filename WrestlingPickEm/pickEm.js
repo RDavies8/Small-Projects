@@ -7,7 +7,8 @@ var curTurn = 1;
 var pLeft = [];
 
 function startPickEm() {
-    var numPlayers = selectNumPlayers();
+    var numPlayers = 2;
+        //selectNumPlayers();
     console.log(numPlayers);
 
     createPlayerData(numPlayers);
@@ -16,6 +17,7 @@ function startPickEm() {
 
     pLeft = potPicks(curTurn);
 
+    listRanks();
     var list = getRank(1);
     showPotPick(list);
 }

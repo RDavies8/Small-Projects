@@ -11,6 +11,7 @@ function getRank(rank){
     else console.log('Displaying Rank ' + rank + '...')
 
     for(var weight in wrData){
+        if(weight == 'id') continue;
         var bracket = wrData[weight];
         list.push(bracket[rank]);
     }

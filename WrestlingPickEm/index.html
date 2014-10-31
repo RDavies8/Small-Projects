@@ -8,7 +8,9 @@
 
 </head>
 <body>
-<div id="pot-picks"></div>
+    <div id="player-tracker"></div>
+    <div id="ranks-selector"></div>
+    <div id="pot-picks"></div>
 
     <script type="text/x-handlebars-template" id="pot-picks-template">
         {{#if wrestlers}}
@@ -16,6 +18,16 @@
             <p id="{{ this.id }}">
                 <strong>{{ this.weight }}</strong>: {{ this.fName }} {{ this.lName }}
             </p>
+            {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/x-handlebars-template" id="ranks-template">
+        {{#if ranks}}
+            {{#each ranks}}
+                <button id="{{ this.rank }}">
+                    <strong>{{ this.rank }}</strong>
+                </button>
             {{/each}}
         {{/if}}
     </script>
