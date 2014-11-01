@@ -32,8 +32,13 @@ function displayPotPicks(list){
 
 function displayRanksSelection(){
     var ranks = [];
-    for(var i = 1; i <= NUMRANKSPICKED; i++){
-        ranks.push({'rank' : i});
+    for(var i = 0; i < NUMRANKSPICKED; i++){
+        var rank = {'rank' : i + 1};
+        console.log(playerData[playerData.curTurn].picksLeft[i].available);
+        if(!playerData[playerData.curTurn].picksLeft[i].available) {
+            rank.del = 1;
+        }
+        ranks.push(rank);
     }
 
     var $ranksCont = $('#ranks-selector');

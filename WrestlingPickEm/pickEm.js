@@ -42,9 +42,21 @@ function nextPlayersTurn(){
         playerData.curTurn = 1;
 
     displayPlayerInfo();
-    var fRank = playerData[playerData.curTurn].picksLeft[0];
+    var fRank = 0;
+       // = playerData[playerData.curTurn].picksLeft[0];
+    picksLeft =  playerData[playerData.curTurn].picksLeft;
+    for(var i = 0; i < NUMRANKSPICKED; i++){
+        if(picksLeft[i].available){
+            fRank = picksLeft[i].pick;
+            break;
+        }
+    }
+    if(fRank == 0){
+        console.log("No Picks Left to Select");
+    }
     var list = getRank(fRank);
     displayPotPicks(list);
+    displayRanksSelection();
 }
 
 

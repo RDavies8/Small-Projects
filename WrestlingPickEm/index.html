@@ -5,12 +5,21 @@
     <title></title>
     <script src="./Extensions/jquery-2.1.1.min.js"></script>
     <script src="./Extensions/handlebars-v2.0.0.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="./CSS/bootstrap.css">
 </head>
 <body>
-    <div id="player-tracker"></div>
-    <div id="ranks-selector"></div>
-    <div id="pot-picks"></div>
+    <div class="container">
+        <div id="player-tracker"></div>
+        <div class="row">
+            <div class="col-xs-3">
+                <div id="ranks-selector"></div>
+            </div>
+            <div class="col-xs-9">
+                <div id="pot-picks"></div>
+            </div>
+
+        </div>
+    </div>
 
     <script type="text/x-handlebars-template" id="pot-picks-template">
         {{#if wrestlers}}
@@ -24,28 +33,51 @@
 
     <script type="text/x-handlebars-template" id="ranks-template">
         {{#if ranks}}
-            {{#each ranks}}
-                <button id="{{ this.rank }}">
-                    <strong>{{ this.rank }}</strong>
-                </button>
-            {{/each}}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Select Rank:
+                </div>
+                <div class="list-group">
+                {{#each ranks}}
+                    {{#if this.del}}
+                        <a id="{{ this.rank }}" class="list-group-item text-center disabled">
+                    {{else}}
+                        <a id="{{ this.rank }}" class="list-group-item text-center">
+                    {{/if}}
+                        <strong>{{ this.rank }}</strong>
+                    </a>
+                {{/each}}
+                </div>
+            </div>
         {{/if}}
     </script>
 
     <script type="text/x-handlebars-template" id="player-tracker-template">
         {{#if players}}
+            <div class="row">
             {{#each players}}
-                <div id="player-{{ this.playerNum }}">
-                    <p><strong>{{ this.playerNum }}</strong></p>
-                    <ul>
-                    {{#if this.picksLeft}}
-                        {{#each this.picksLeft}}
-                            <li>{{this}}</li>
-                        {{/each}}
-                    {{/if}}
-                    </ul>
+                {{#if this.playerNum }}
+                <div class="col-xs-6 col-md-3">
+                    <div id="player-{{ this.playerNum }}" class="panel panel-success">
+                        <div class="panel-body">
+                            <p><strong>{{ this.playerNum }}</strong></p>
+                            <ul class="list-inline">
+                            {{#if this.picksLeft}}
+                                {{#each this.picksLeft}}
+                                    {{#if this.available }}
+                                        <li>{{this.pick}}</li>
+                                    {{else}}
+                                        <li><s>{{this.pick}}</s></li>
+                                    {{/if}}
+                                {{/each}}
+                            {{/if}}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+                {{/if}}
             {{/each}}
+            </div>
         {{/if}}
     </script>
 
